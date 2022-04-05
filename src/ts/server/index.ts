@@ -1,9 +1,15 @@
+#!/usr/bin/env node
+
+
 'use strict'
 
-import Config from './config'
-import SilexServer from './SilexServer'
+import 'source-map-support/register'
+import { config } from './config'
+import { start } from './start'
 
-export {
-  Config,
-  SilexServer,
-}
+start(config).then((app) => {
+  console.info(`
+I'm ready, listening to port ${config.port}
+${config.url}
+  `)
+})
